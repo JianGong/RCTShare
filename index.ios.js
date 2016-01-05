@@ -8,6 +8,7 @@ var React = require('react-native');
 var {
   AppRegistry,
   StyleSheet,
+Image,
   Text,
   ScrollView,
 TouchableOpacity,
@@ -23,7 +24,7 @@ var Button  = React.createClass({
   render () {
     return (
   <TouchableOpacity onPress={this.props.onButtonPress}>
-    <Text style={[this.props.style,{justifyContent:'center',textAlign:'center'}]}>
+    <Text style={[this.props.style,{margin:10,justifyContent:'center',textAlign:'center'}]}>
       {this.props.title}
     </Text>
   </TouchableOpacity>
@@ -33,12 +34,44 @@ var Button  = React.createClass({
 
 
 var WXView = React.createClass({
+getInitialState:function(){
+  return {
+  sessionScene:'',
+  scene:WXApi.WXReqTypeText,
+  };
+},
 _showAlert: function(title:string, msg:string){
 AlertIOS.alert(title,msg);
 },
 render: function (){
 return (
-        <ScrollView style={{backgroundColor:'white'}} >
+<View style={{flex:1,flexDirection:'column',alignItems:'center',marginTop:20}}>
+<View style={{flexDirection:'column',backgroundColor:'eoeed1'}}>
+    <Image source={require('./img/micro_messenger.png')} style={{alignSelf:'center',maxWidth:300,maxHeight:300}}/>
+    <Text  style={{alignSelf:'flex-start'}}>
+      微信分享实例
+    </Text>
+</View>
+  <View style={{alignSelf:'stretch',flexDirection:'column'}}>
+      <Text style={{alignSelf:'flex-start',marginLeft:20}}>
+          微信分享场景:{this.state.sessionScene}
+      </Text>
+      <View style={{flexDirection:'row',justifyContent:'space-around'}}>
+          <Button title={'会话'}
+           onButtonPress={(result)=> { this.setState({
+             sessionScene:'会话'
+           }); }}/>
+          <Button title={'朋友圈'}
+           onButtonPress={(result)=> { this.setState({
+             sessionScene:'朋友圈'
+           });  }}/>
+          <Button title={'收藏'}
+           onButtonPress={(result)=> { this.setState({
+             sessionScene:'收藏'
+           });  }}/>
+      </View>
+  </View>
+        <ScrollView style={{backgroundColor:'white',flex:1,alignSelf:'stretch'}} >
           <Button title={'检测是否安装微信'} onButtonPress={()=>{WXApi.isWXAppInstalled((result)=>{console.log(result);this._showAlert('微信检测','是否安装'+result)}); }}/>
           <Button title={'获取Api版本号'}
           onButtonPress={(result)=>{WXApi.getApiVersion((result)=>{console.log(result);this._showAlert('微信Api版本','版本:'+result)})}} />
@@ -59,6 +92,7 @@ return (
 
 
         </ScrollView>
+      </View>
       );
 },
 

@@ -23,6 +23,7 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		5A62169F1C3BB0CE0003A253 /* shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A62169E1C3BB0CE0003A253 /* shop.png */; };
 		5A6216A71C3BB5E70003A253 /* iosmain.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 5A6216A61C3BB5E70003A253 /* iosmain.jsbundle */; };
+		5A6216B31C3BC9F50003A253 /* micro_messenger.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A6216B21C3BC9F50003A253 /* micro_messenger.png */; };
 		5A8AC6971C3A1C4A0094D2E8 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8AC6921C3A1C4A0094D2E8 /* libWeChatSDK.a */; };
 		5A8AC6981C3A1C4A0094D2E8 /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5A8AC6931C3A1C4A0094D2E8 /* read_me.txt */; };
 		5A8AC69A1C3A1C6A0094D2E8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8AC6991C3A1C6A0094D2E8 /* SystemConfiguration.framework */; };
@@ -136,6 +137,7 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		5A62169E1C3BB0CE0003A253 /* shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shop.png; sourceTree = "<group>"; };
 		5A6216A61C3BB5E70003A253 /* iosmain.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iosmain.jsbundle; sourceTree = "<group>"; };
+		5A6216B21C3BC9F50003A253 /* micro_messenger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = micro_messenger.png; sourceTree = "<group>"; };
 		5A8AC6921C3A1C4A0094D2E8 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		5A8AC6931C3A1C4A0094D2E8 /* read_me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = read_me.txt; sourceTree = "<group>"; };
 		5A8AC6941C3A1C4A0094D2E8 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				5A62169E1C3BB0CE0003A253 /* shop.png */,
+				5A6216B21C3BC9F50003A253 /* micro_messenger.png */,
 				5A6216A61C3BB5E70003A253 /* iosmain.jsbundle */,
 				5A8AC6921C3A1C4A0094D2E8 /* libWeChatSDK.a */,
 				5A8AC6931C3A1C4A0094D2E8 /* read_me.txt */,
@@ -551,6 +554,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A6216B31C3BC9F50003A253 /* micro_messenger.png in Resources */,
 				5A6216A71C3BB5E70003A253 /* iosmain.jsbundle in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				5A62169F1C3BB0CE0003A253 /* shop.png in Resources */,
