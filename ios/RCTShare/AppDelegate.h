@@ -16,3 +16,7 @@
 
 @end
 UIKIT_EXTERN NSString * const kWXApiKey;
+
+@interface UIDevice (isDevice)
+- (BOOL) isDevice;
+@end

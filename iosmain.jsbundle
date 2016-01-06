@@ -1236,7 +1236,8 @@ AppRegistry=
 
 
 
-React.AppRegistry;var StyleSheet=React.StyleSheet;var Text=React.Text;var ScrollView=React.ScrollView;var TouchableOpacity=React.TouchableOpacity;var View=React.View;var TabBarIOS=React.TabBarIOS;var AlertIOS=React.AlertIOS;
+
+React.AppRegistry;var StyleSheet=React.StyleSheet;var Image=React.Image;var Text=React.Text;var ScrollView=React.ScrollView;var TouchableOpacity=React.TouchableOpacity;var View=React.View;var TabBarIOS=React.TabBarIOS;var AlertIOS=React.AlertIOS;
 var WX_TITLE='WX';
 var WXApi=require('RCTShare/wx/wx.js');
 
@@ -1244,7 +1245,7 @@ var Button=React.createClass({displayName:'Button',
 render:function(){
 return (
 React.createElement(TouchableOpacity,{onPress:this.props.onButtonPress},
-React.createElement(Text,{style:[this.props.style,{justifyContent:'center',textAlign:'center'}]},
+React.createElement(Text,{style:[this.props.style,{margin:10,justifyContent:'center',textAlign:'center'}]},
 this.props.title)));}});
 
 
@@ -1254,25 +1255,59 @@ this.props.title)));}});
 
 
 var WXView=React.createClass({displayName:'WXView',
+getInitialState:function(){
+return {
+sessionScene:'',
+shareScene:WXApi.WXSceneSession,
+shareType:WXApi.WXReqTypeText};},
+
+
 _showAlert:function(title,msg){
 AlertIOS.alert(title,msg);},
 
 render:function(){var _this=this;
 return (
-React.createElement(ScrollView,{style:{backgroundColor:'white'}},
+React.createElement(View,{style:{flex:1,flexDirection:'column',alignItems:'center',marginTop:20}},
+React.createElement(View,{style:{flexDirection:'column',backgroundColor:'eoeed1'}},
+React.createElement(Image,{source:require('RCTShare/img/micro_messenger.png'),style:{alignSelf:'center',maxWidth:300,maxHeight:300}}),
+React.createElement(Text,{style:{alignSelf:'flex-start'}},'微信分享实例')),
+
+
+
+React.createElement(View,{style:{alignSelf:'stretch',flexDirection:'column'}},
+React.createElement(Text,{style:{alignSelf:'flex-start',marginLeft:20}},'微信分享场景:',
+this.state.sessionScene),
+
+React.createElement(View,{style:{flexDirection:'row',justifyContent:'space-around'}},
+React.createElement(Button,{title:'会话',
+onButtonPress:function(result){_this.setState({
+sessionScene:'会话',shareScene:WXApi.WXSceneSession});}}),
+
+React.createElement(Button,{title:'朋友圈',
+onButtonPress:function(result){_this.setState({
+sessionScene:'朋友圈',shareScene:WXApi.WXSceneTimeline});}}),
+
+React.createElement(Button,{title:'收藏',
+onButtonPress:function(result){_this.setState({
+sessionScene:'收藏',shareScene:WXApi.WXSceneFavorite});}}))),
+
+
+
+React.createElement(ScrollView,{style:{backgroundColor:'white',flex:1,alignSelf:'stretch'}},
 React.createElement(Button,{title:'检测是否安装微信',onButtonPress:function(){WXApi.isWXAppInstalled(function(result){console.log(result);_this._showAlert('微信检测','是否安装'+result);});}}),
 React.createElement(Button,{title:'获取Api版本号',
 onButtonPress:function(result){WXApi.getApiVersion(function(result){console.log(result);_this._showAlert('微信Api版本','版本:'+result);});}}),
 React.createElement(Button,{title:'分享文本数据',
 onButtonPress:function(result){
-WXApi.sendReq({type:WXApi.WXReqTypeText,body:{bText:true,scene:WXApi.WXReqSceneSession,text:"O(∩_∩)O哈哈哈~，来自react native的分享"}},function(result){
+WXApi.sendReq({type:WXApi.WXReqTypeText,body:{bText:true,scene:_this.state.shareScene,text:"O(∩_∩)O哈哈哈~，来自react native的分享"}},function(result){
 _this._showAlert('分享','反馈结果:'+result);});}}),
 
 
 React.createElement(Button,{title:'分享图片信息',
 onButtonPress:function(resut){
-WXApi.sendReq({type:WXApi.WXReqTypeImage,body:{bText:false,scene:WXApi.WXReqSceneSession,text:"O(∩_∩)O哈哈哈~，来自react native的分享",message:{object:{imageUrl:'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png'},thumbImage:'shop'}}},function(result){
-_this._showAlert('分享','反馈结果:'+result);});}})));}});
+WXApi.sendReq({type:WXApi.WXReqTypeImage,body:{bText:false,scene:_this.state.shareScene,text:"O(∩_∩)O哈哈哈~，来自react native的分享",message:{object:{imageUrl:'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png'},thumbImage:'shop'}}},function(result){
+_this._showAlert('分享','反馈结果:'+result);});}}))));}});
+
 
 
 
@@ -57480,6 +57515,8 @@ React.AppRegistry;var StyleSheet=React.StyleSheet;var Text=React.Text;var Scroll
 var WXApi=require('react-native/Libraries/react-native/react-native.js').NativeModules.WXApiManger;
 
 module.exports=WXApi;
+});
+__d('RCTShare/img/micro_messenger.png',function(global, require, module, exports) {  module.exports = require("AssetRegistry").registerAsset({"__packager_asset":true,"fileSystemLocation":"/Users/mave/RCTShare/img","httpServerLocation":"/assets/img","width":89,"height":73,"scales":[1],"files":["/Users/mave/RCTShare/img/micro_messenger.png"],"hash":"c64674f59cd22b05f88caae51379a93f","name":"micro_messenger","type":"png"});
 });
 ;require("InitializeJavaScriptAppEngine");
 ;require("RCTShare/index.ios.js");

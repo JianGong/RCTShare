@@ -37,7 +37,8 @@ var WXView = React.createClass({
 getInitialState:function(){
   return {
   sessionScene:'',
-  scene:WXApi.WXReqTypeText,
+  shareScene:WXApi.WXSceneSession,
+  shareType:WXApi.WXReqTypeText,
   };
 },
 _showAlert: function(title:string, msg:string){
@@ -59,15 +60,15 @@ return (
       <View style={{flexDirection:'row',justifyContent:'space-around'}}>
           <Button title={'会话'}
            onButtonPress={(result)=> { this.setState({
-             sessionScene:'会话'
+             sessionScene:'会话',shareScene:WXApi.WXSceneSession,
            }); }}/>
           <Button title={'朋友圈'}
            onButtonPress={(result)=> { this.setState({
-             sessionScene:'朋友圈'
+             sessionScene:'朋友圈',shareScene:WXApi.WXSceneTimeline
            });  }}/>
           <Button title={'收藏'}
            onButtonPress={(result)=> { this.setState({
-             sessionScene:'收藏'
+             sessionScene:'收藏',shareScene:WXApi.WXSceneFavorite
            });  }}/>
       </View>
   </View>
@@ -77,13 +78,13 @@ return (
           onButtonPress={(result)=>{WXApi.getApiVersion((result)=>{console.log(result);this._showAlert('微信Api版本','版本:'+result)})}} />
           <Button title={'分享文本数据'}
           onButtonPress={(result)=>{
-              WXApi.sendReq({type:WXApi.WXReqTypeText,body:{bText:true,scene:WXApi.WXReqSceneSession,text:"O(∩_∩)O哈哈哈~，来自react native的分享"}}, (result)=>{
+              WXApi.sendReq({type:WXApi.WXReqTypeText,body:{bText:true,scene:this.state.shareScene,text:"O(∩_∩)O哈哈哈~，来自react native的分享"}}, (result)=>{
               this._showAlert('分享','反馈结果:'+result)
                 });
             }} />
         <Button title={'分享图片信息'}
           onButtonPress = {(resut)=>{
-            WXApi.sendReq({type:WXApi.WXReqTypeImage,body:{bText:false,scene:WXApi.WXReqSceneSession,text:"O(∩_∩)O哈哈哈~，来自react native的分享",message:{object:{imageUrl:'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png'},thumbImage:'shop'}}}, (result)=>{
+            WXApi.sendReq({type:WXApi.WXReqTypeImage,body:{bText:false,scene:this.state.shareScene,text:"O(∩_∩)O哈哈哈~，来自react native的分享",message:{object:{imageUrl:'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png'},thumbImage:'shop'}}}, (result)=>{
             this._showAlert('分享','反馈结果:'+result)
               });
           }
