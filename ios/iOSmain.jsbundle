@@ -1325,7 +1325,7 @@ description:"描述",
 title:"title",
 thumbImage:'shop',
 object:{
-thumbImage:'shop',
+thumbImage:'Icon',
 webpageUrl:'http://www.baidu.com'}}}},
 
 

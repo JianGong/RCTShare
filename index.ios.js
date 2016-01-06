@@ -102,9 +102,9 @@ return (
                         message:{
                           description:"描述",
                           title:"title",
-                          thumbImage:'shop',
+                          thumbImage:'Icon',
                           object:{
-                            thumbImage:'shop',
+                            thumbImage:'Icon',
                             webpageUrl:'http://www.baidu.com'
                           }
                         }
