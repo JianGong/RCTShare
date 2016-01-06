@@ -49,6 +49,9 @@ RCT_EXPORT_METHOD(sendReq:(NSDictionary *) req callBack:(RCTResponseSenderBlock)
       case WXReqTypeMusic:
       _wxReq = [[WXApiMusicReq alloc] initWithDict:body];
       break;
+      case WXReqTypeWeb:
+      _wxReq = [[WXApiWebReq alloc] initWithDict:body];
+      break;
     default:
       break;
   }
@@ -253,10 +256,38 @@ return   [WXApi sendReq:_req];
 
 
 @implementation WXApiWebReq
+/*
+ @{
+    @"title":@"title",
+    @"description":@"description",
+    @"thumbImage":@"thumbImageName"
+ }
+ */
 -(void)handleMessage:(NSDictionary *)message{
+    _wxMessage = [WXMediaMessage message];
+    _wxMessage.title = [message[@"title"] description];
+    _wxMessage.description = [message[@"description"] description];
+    NSString * thumnImageName = message[@"thumbImage"];
+    if (thumnImageName) {
+        
+        [_wxMessage setThumbImage:[UIImage imageNamed:thumnImageName]];
+    }
 }
+/*
+ @{
+    @"webpageUrl":@"page url string",
+ }
+ */
 -(void)handleMedia:(NSDictionary *)media{
-  
+  if (media.allKeys.count <= 0) {
+    return;
+  }
+  _wxObject = [WXWebpageObject object];
+  NSString * webpageUrl = media[@"webpageUrl"];
+  if (webpageUrl) {
+    WXWebpageObject * webObject = (WXWebpageObject *) _wxObject;
+    webObject.webpageUrl = webpageUrl;
+  }
 }
 
 @end

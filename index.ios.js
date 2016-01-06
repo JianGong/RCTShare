@@ -87,10 +87,33 @@ return (
             WXApi.sendReq({type:WXApi.WXReqTypeImage,body:{bText:false,scene:this.state.shareScene,text:"O(∩_∩)O哈哈哈~，来自react native的分享",message:{object:{imageUrl:'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png'},thumbImage:'shop'}}}, (result)=>{
             this._showAlert('分享','反馈结果:'+result)
               });
+            }
           }
-        }
-/>
+      />
 
+      <Button title={'分享网页'}
+          onButtonPress={(result)=>{
+          WXApi.sendReq({
+                  type:WXApi.WXReqTypeWeb,
+                  body:{
+                        bText:false,
+                        scene:this.state.shareScene,
+                        text:"网页分享",
+                        message:{
+                          description:"描述",
+                          title:"title",
+                          thumbImage:'shop',
+                          object:{
+                            thumbImage:'shop',
+                            webpageUrl:'http://www.baidu.com'
+                          }
+                        }
+                    }
+            },(result)=>{
+this._showAlert('web分享','结果：'+result);
+              });
+          }}
+      />
 
         </ScrollView>
       </View>

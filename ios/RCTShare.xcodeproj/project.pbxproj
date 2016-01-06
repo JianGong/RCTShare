@@ -32,7 +32,7 @@
 		5A8AC6A21C3A1D690094D2E8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8AC6A11C3A1D690094D2E8 /* CFNetwork.framework */; };
 		5A8AC6A41C3A1D970094D2E8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8AC6A31C3A1D970094D2E8 /* CoreTelephony.framework */; };
 		5A8AC6A81C3A41CA0094D2E8 /* WXApiManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8AC6A71C3A41CA0094D2E8 /* WXApiManger.m */; };
-		5A98662A1C3CBC950084FDE7 /* iOSmain.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 5A9866291C3CBC950084FDE7 /* iOSmain.jsbundle */; };
+		5A98664A1C3CEC260084FDE7 /* iOSmain.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 5A9866491C3CEC260084FDE7 /* iOSmain.jsbundle */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 /* End PBXBuildFile section */
 
@@ -150,7 +150,7 @@
 		5A8AC6A31C3A1D970094D2E8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		5A8AC6A61C3A41CA0094D2E8 /* WXApiManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApiManger.h; path = WXManger/WXApiManger.h; sourceTree = "<group>"; };
 		5A8AC6A71C3A41CA0094D2E8 /* WXApiManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXApiManger.m; path = WXManger/WXApiManger.m; sourceTree = "<group>"; };
-		5A9866291C3CBC950084FDE7 /* iOSmain.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iOSmain.jsbundle; sourceTree = "<group>"; };
+		5A9866491C3CEC260084FDE7 /* iOSmain.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iOSmain.jsbundle; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -267,10 +267,10 @@
 			isa = PBXGroup;
 			children = (
 				5A62169E1C3BB0CE0003A253 /* shop.png */,
+				5A9866491C3CEC260084FDE7 /* iOSmain.jsbundle */,
 				5A6216B21C3BC9F50003A253 /* micro_messenger.png */,
 				5A8AC6921C3A1C4A0094D2E8 /* libWeChatSDK.a */,
 				5A8AC6931C3A1C4A0094D2E8 /* read_me.txt */,
-				5A9866291C3CBC950084FDE7 /* iOSmain.jsbundle */,
 				5A8AC6941C3A1C4A0094D2E8 /* WechatAuthSDK.h */,
 				5A8AC6951C3A1C4A0094D2E8 /* WXApi.h */,
 				5A8AC6961C3A1C4A0094D2E8 /* WXApiObject.h */,
@@ -557,7 +557,7 @@
 				5A6216B31C3BC9F50003A253 /* micro_messenger.png in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				5A62169F1C3BB0CE0003A253 /* shop.png in Resources */,
-				5A98662A1C3CBC950084FDE7 /* iOSmain.jsbundle in Resources */,
+				5A98664A1C3CEC260084FDE7 /* iOSmain.jsbundle in Resources */,
 				5A8AC6981C3A1C4A0094D2E8 /* read_me.txt in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
