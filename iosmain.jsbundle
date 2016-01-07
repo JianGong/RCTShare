@@ -1238,8 +1238,11 @@ AppRegistry=
 
 
 React.AppRegistry;var StyleSheet=React.StyleSheet;var Image=React.Image;var Text=React.Text;var ScrollView=React.ScrollView;var TouchableOpacity=React.TouchableOpacity;var View=React.View;var TabBarIOS=React.TabBarIOS;var AlertIOS=React.AlertIOS;
+
 var WX_TITLE='WX';
+var UM_TITLE='UM';
 var WXApi=require('RCTShare/wx/wx.js');
+var UMApi=require('RCTShare/um/um.js');
 
 var Button=React.createClass({displayName:'Button',
 render:function(){
@@ -1323,7 +1326,7 @@ text:"网页分享",
 message:{
 description:"描述",
 title:"title",
-thumbImage:'shop',
+thumbImage:'Icon',
 object:{
 thumbImage:'Icon',
 webpageUrl:'http://www.baidu.com'}}}},
@@ -1336,6 +1339,30 @@ _this._showAlert('web分享','结果：'+result);});}}))));}});
 
 
 
+
+
+
+
+
+
+
+var UMengView=React.createClass({displayName:'UMengView',
+getInitialState:function(){
+return {};},
+
+
+
+render:function(){
+return (
+React.createElement(View,{style:{flex:1,flexDirection:'column',backgroundColor:'eef0ef'}},
+React.createElement(View,{style:{flexDirection:'column',alignItems:'center'}},
+React.createElement(Image,{source:require('RCTShare/img/umeng.png'),style:{alignSelf:'center',maxWidth:200,maxHeight:200}}),
+React.createElement(Text,{style:{fontSize:25,padding:20}},'有盟分享')),
+
+React.createElement(ScrollView,{style:{flex:1,borderWidth:1,borderColor:'gray'}},
+React.createElement(Button,{title:'分享样式1',
+onButtonPress:function(result){
+UMApi.shareText('react native 的包装分享','shop',[UMApi.UMSocialSnsTypeSina,UMApi.UMSocialSnsTypeEmail]);}}))));}});
 
 
 
@@ -1368,8 +1395,14 @@ selected:this.state.defaultItem===WX_TITLE},
 React.createElement(WXView,null)),
 
 
-React.createElement(TabBarIOS.Item,{title:'Unknown'})));}});
+React.createElement(TabBarIOS.Item,{title:UM_TITLE,
+onPress:function(){
+_this2.setState({
+defaultItem:UM_TITLE});},
 
+
+selected:this.state.defaultItem===UM_TITLE},
+React.createElement(UMengView,null))));}});
 
 
 
@@ -57539,7 +57572,27 @@ var WXApi=require('react-native/Libraries/react-native/react-native.js').NativeM
 
 module.exports=WXApi;
 });
+__d('RCTShare/um/um.js',function(global, require, module, exports) {  'use strict';
+
+var React=require('react-native/Libraries/react-native/react-native.js');var 
+
+AppRegistry=
+
+
+
+
+
+
+
+
+React.AppRegistry;var StyleSheet=React.StyleSheet;var Text=React.Text;var ScrollView=React.ScrollView;var TouchableOpacity=React.TouchableOpacity;var View=React.View;var TabBarIOS=React.TabBarIOS;var AlertIOS=React.AlertIOS;
+var UMApi=require('react-native/Libraries/react-native/react-native.js').NativeModules.UMApiManger;
+
+module.exports=UMApi;
+});
 __d('RCTShare/img/micro_messenger.png',function(global, require, module, exports) {  module.exports = require("AssetRegistry").registerAsset({"__packager_asset":true,"fileSystemLocation":"/Users/mave/RCTShare/img","httpServerLocation":"/assets/img","width":89,"height":73,"scales":[1],"files":["/Users/mave/RCTShare/img/micro_messenger.png"],"hash":"c64674f59cd22b05f88caae51379a93f","name":"micro_messenger","type":"png"});
+});
+__d('RCTShare/img/umeng.png',function(global, require, module, exports) {  module.exports = require("AssetRegistry").registerAsset({"__packager_asset":true,"fileSystemLocation":"/Users/mave/RCTShare/img","httpServerLocation":"/assets/img","width":144,"height":144,"scales":[1],"files":["/Users/mave/RCTShare/img/umeng.png"],"hash":"415ecc131c09d89172cd0fe85956c57d","name":"umeng","type":"png"});
 });
 ;require("InitializeJavaScriptAppEngine");
 ;require("RCTShare/index.ios.js");

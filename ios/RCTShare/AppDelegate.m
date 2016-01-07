@@ -10,7 +10,8 @@
 #import "AppDelegate.h"
 
 #import "RCTRootView.h"
-
+#import "UMSocial.h"
+#import "UMSocialWechatHandler.h"
 @implementation AppDelegate
 -(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
   return [WXApi handleOpenURL:url delegate:self];
@@ -20,7 +21,11 @@
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [UMSocialData setAppKey:kWXApiKey];
   [WXApi registerApp:kWXApiKey];
+  
+  [UMSocialWechatHandler setWXAppId:kWXApiKey appSecret:kWXApiSecret url:@"https://github.com/skeyboy/RCTShare"];
+  
   NSURL *jsCodeLocation;
 
   /**
@@ -66,6 +71,10 @@ NSString * localhost = @"192.168.1.103";
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  
+  
+  
+  
   return YES;
 }
 -(void)onResp:(BaseResp *)resp{
@@ -77,7 +86,11 @@ NSString * localhost = @"192.168.1.103";
 
 @end
 
+NSString * const kUMApiKey = @"5684bad6e0f55aee83001685";
+
 NSString * const kWXApiKey = @"wx479cda8a45e3c667" ;
+NSString * const kWXApiSecret = @"739f829103cbbd62ffd0f1c84473d791";
+
 @implementation UIDevice (isDevice)
 
 -(BOOL)isDevice{

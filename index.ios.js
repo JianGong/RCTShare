@@ -17,8 +17,11 @@ TabBarIOS,
 AlertIOS,
 
 } = React;
+
 var WX_TITLE = 'WX';
+var UM_TITLE = 'UM';
 var WXApi = require('./wx/wx.js');
+var UMApi = require('./um/um.js');
 
 var Button  = React.createClass({
   render () {
@@ -122,6 +125,30 @@ this._showAlert('web分享','结果：'+result);
 
 });
 
+  var UMengView = React.createClass({
+getInitialState: function(){
+return {
+
+};
+},
+render: function(){
+    return (
+      <View style={{flex:1,flexDirection:'column',marginTop:20,backgroundColor:'eef0ef'}}>
+          <View style={{flexDirection:'column',alignItems:'center'}}>
+<Image source={require('./img/umeng.png')} style={{alignSelf:'center',maxWidth:200,maxHeight:200}}/>
+<Text style={{fontSize:25,padding:20}}>有盟分享</Text>
+          </View>
+            <ScrollView style={{flex:1,borderWidth:1,borderColor:'gray'}}>
+                <Button title={'分享样式1'}
+                    onButtonPress={(result)=>{
+UMApi.shareText('react native 的包装分享','shop',[UMApi.UMSocialSnsTypeSina,UMApi.UMSocialSnsTypeFacebook,UMApi.UMSocialSnsTypeTwitter,UMApi.UMSocialSnsTypeWechatSession,UMApi.UMSocialSnsTypeWechatTimeline,UMApi.UMSocialSnsTypeEmail]);
+                    }}
+                />
+            </ScrollView>
+      </View>
+    );},
+  });
+
 var RCTShare = React.createClass({
 getInitialState:function(){
 return {
@@ -147,9 +174,15 @@ this.setState({
             <WXView />
           </TabBarIOS.Item>
 
-<TabBarIOS.Item title={'Unknown'}>
-
-</TabBarIOS.Item>
+          <TabBarIOS.Item title={UM_TITLE}
+            onPress={()=>{
+              this.setState({
+                defaultItem:UM_TITLE,
+              });
+            }}
+            selected = {this.state.defaultItem === UM_TITLE}>
+            <UMengView />
+          </TabBarIOS.Item>
       </TabBarIOS>
     );
   }
